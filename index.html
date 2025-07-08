@@ -10,7 +10,9 @@
     <body>
         <div id="app">
             <h1>{{ message }}</h1>
-            <h2>{{ luckyNumber }}</h2>
+            <p>{{ luckyNumber }}</p>
+            <p>Array: {{ arrary }}</p>
+            <p>{{ obj.name }} is {{ obj.age }} years old and earns {{ obj.salary }}</p>
         </div>
     </body>
     <script>
@@ -19,9 +21,17 @@
             setup() {
                 const message = "Hello World";
                 const luckyNumber = 7;
-                return {
-                    message,
-                    luckyNumber,
+                const arrary = [1, 2, 3];
+                const obj = {
+                    name: "John",
+                    age: 30,
+                    salary: 5000,
+                };
+                return { 
+                    message, 
+                    luckyNumber, 
+                    arrary, 
+                    obj
                 };
             },
         }).mount("#app");
