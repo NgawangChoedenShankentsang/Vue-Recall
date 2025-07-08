@@ -9,9 +9,11 @@
     </head>
     <body>
         <div id="app">
-            <h1>{{ message }}</h1>
+            <h1>{{ getMessage() }}</h1>
             <p>{{ luckyNumber }}</p>
-            <p>Array: {{ arrary }}</p>
+            <p>Lucky Number is an: {{ luckyNumber%2==0 ? "even" : "odd" }}</p>
+            <p>Random Number: {{ getRandomNumber() }}</p>
+            <!-- <p>Array: {{ arrary }}</p> -->
             <p>{{ obj.name }} is {{ obj.age }} years old and earns {{ obj.salary }}</p>
         </div>
     </body>
@@ -21,17 +23,24 @@
             setup() {
                 const message = "Hello World";
                 const luckyNumber = 7;
-                const arrary = [1, 2, 3];
+                // const arrary = [1, 2, 3];
                 const obj = {
                     name: "John",
                     age: 30,
                     salary: 5000,
                 };
+                function getMessage() {
+                    return message.toUpperCase();
+                }
+                function getRandomNumber() {
+                    return Math.floor(Math.random() * 10)+1;
+                }
                 return { 
-                    message, 
                     luckyNumber, 
-                    arrary, 
-                    obj
+                    // arrary, 
+                    obj,
+                    getRandomNumber,
+                    getMessage
                 };
             },
         }).mount("#app");
