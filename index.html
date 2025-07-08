@@ -9,38 +9,40 @@
     </head>
     <body>
         <div id="app">
-            <h1>{{ getMessage() }}</h1>
+            <span v-html="getMessage()"></span>
             <p>{{ luckyNumber }}</p>
             <p>Lucky Number is an: {{ luckyNumber%2==0 ? "even" : "odd" }}</p>
-            <p>Random Number: {{ getRandomNumber() }}</p>
+            <p>Random Number: {{ updateLuckyNumber() }}</p>
             <!-- <p>Array: {{ arrary }}</p> -->
             <p>{{ obj.name }} is {{ obj.age }} years old and earns {{ obj.salary }}</p>
         </div>
     </body>
     <script>
-        const { createApp, ref } = Vue;
+        const { createApp, ref, reactive } = Vue;
         createApp({
             setup() {
                 const message = "Hello World";
                 const luckyNumber = ref(7);
                 // const arrary = [1, 2, 3];
-                const obj = {
+                const obj = reactive({
                     name: "John",
                     age: 30,
                     salary: 5000,
-                };
+                });
                 function getMessage() {
-                    return message.toUpperCase();
+                return `<h1>${message}</h1>`;
                 }
-                function getRandomNumber() {
-                    luckyNumber.value = Math.floor(Math.random() * 10)+1;
-                    return Math.floor(Math.random() * 10)+1;
+                function updateLuckyNumber() {
+                    setTimeout(() => {
+                        luckyNumber.value = 55;
+                        obj.age = 40;
+                    }, 2000);
                 }
                 return { 
                     luckyNumber, 
                     // arrary, 
                     obj,
-                    getRandomNumber,
+                    updateLuckyNumber,
                     getMessage
                 };
             },
