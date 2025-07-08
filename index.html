@@ -11,6 +11,8 @@
         <div id="app">
             <span v-html="getMessage()"></span>
             <p>{{ luckyNumber }}</p>
+            <p v-once>Render once: {{ luckyNumber }}</p>
+            <a v-bind:href="blogUrl">Blog</a>
             <p>Lucky Number is an: {{ luckyNumber%2==0 ? "even" : "odd" }}</p>
             <p>Random Number: {{ updateLuckyNumber() }}</p>
             <!-- <p>Array: {{ arrary }}</p> -->
@@ -23,6 +25,7 @@
             setup() {
                 const message = "Hello World";
                 const luckyNumber = ref(7);
+                const blogUrl = ref("https://google.com");
                 // const arrary = [1, 2, 3];
                 const obj = reactive({
                     name: "John",
@@ -43,7 +46,8 @@
                     // arrary, 
                     obj,
                     updateLuckyNumber,
-                    getMessage
+                    getMessage,
+                    blogUrl
                 };
             },
         }).mount("#app");
