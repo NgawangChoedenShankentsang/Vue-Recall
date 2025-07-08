@@ -18,11 +18,11 @@
         </div>
     </body>
     <script>
-        const { createApp } = Vue;
+        const { createApp, ref } = Vue;
         createApp({
             setup() {
                 const message = "Hello World";
-                const luckyNumber = 7;
+                const luckyNumber = ref(7);
                 // const arrary = [1, 2, 3];
                 const obj = {
                     name: "John",
@@ -33,6 +33,7 @@
                     return message.toUpperCase();
                 }
                 function getRandomNumber() {
+                    luckyNumber.value = Math.floor(Math.random() * 10)+1;
                     return Math.floor(Math.random() * 10)+1;
                 }
                 return { 
